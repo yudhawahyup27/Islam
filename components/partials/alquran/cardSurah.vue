@@ -17,7 +17,6 @@
             </div>
             <div class="text-right p-2 my-auto">
                 <h1 class="text-xl">{{ surah.asma }}</h1>
-                
                 <audio ref="audio" controls class="w-full">
                     <source :src="surah.audio" type="audio/mp3" />
                 </audio>

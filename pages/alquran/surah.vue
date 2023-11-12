@@ -5,25 +5,31 @@
             <h2 class="text-center">({{ surah.translation }})</h2>
             <h6 class="text-center">{{ surah.revelation }} | {{ surah.numberOfAyahs }} Ayat</h6>
             <span>Deskripsi</span>
-            <p class="text-gray-500 text-justify  p-5">{{ surah.description }}</p>
+            <p class="text-gray-500 text-justify desk p-5">{{ surah.description }}</p>
+            <audio ref="audio" controls class="w-full">
+                <source :src="surah.audio" type="audio/mp3" />
+            </audio>
         </div>
         <div class="text-center my-4">
             <h3>{{ surah.bismillah.arab }}</h3>
         </div>
-        <div v-for="ayah in surah.ayahs" :key="ayah.number.inQuran"
+
+
+        <div v-for=" ayah  in  surah.ayahs " :key="ayah.number.inQuran"
             class="mt-4 relative mx-4 p-5 shadow-md rounded-lg block">
-            <div class="grid md:grid-cols-2 w-full ">
+            <div class="float-right">
+                <img :src="ayah.image.primary" alt="Ayah Image" class="   w-200 md:w-25   ">
+            </div>
+            <div class="w-full ">
+
                 <div class="">
-                    <h6>Arti</h6>
                     <p class="text-xs text-justify ">{{ ayah.translation }}</p>
                     <button @click="toggleTafsir"
                         class="bg-white py-1 px-2  my-2 rounded-lg border border-gray-200 hover:border-gray-300 text-purple-900 shadow-md font-medium transition-colors">
                         {{ bukatafsir ? 'tutup tafsir' : "buka tafsir" }}
                     </button>
                 </div>
-                <div class="">
-                    <img :src="ayah.image.secondary" alt="Ayah Image" class="   w-full md:w-25   ">
-                </div>
+
 
             </div>
             <!-- tafsir -->
@@ -69,7 +75,7 @@
                                     </p>
                                 </div>
                                 <div v-bind:class="{ 'hidden': openTab !== 2, 'block': openTab === 2 }">
-                                    <p class="text-sm ">
+                                    <p class="text-sm desk  text-justify ">
                                         {{ ayah.tafsir.kemenag.long }}
                                     </p>
                                 </div>
@@ -136,3 +142,10 @@ export default {
     },
 };
 </script>
+
+<style>
+.desk {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+</style>
