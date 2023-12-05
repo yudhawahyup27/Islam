@@ -4,9 +4,11 @@
             class="relative grid grid-cols-3 shadow my-4 mx-2 w-full lg:w-[400px] p-0">
             <div class="flex items-center justify-center rounded p-1 text-center">
                 <span class="font-bold">{{ surah.number }}</span>
-                <img class="w-20 h-20"
-                    src="https://png.pngtree.com/png-clipart/20211116/original/pngtree-decorative-round-ornament-with-pattern-circle-frame-png-image_6940647.png"
-                    alt="" />
+          <img
+            alt=""
+            class="w-20 h-20"
+            src="https://png.pngtree.com/png-clipart/20211116/original/pngtree-decorative-round-ornament-with-pattern-circle-frame-png-image_6940647.png"
+          />
             </div>
             <div class="mx-2">
                 <nuxt-link :to="{ path: '/alquran/surah', query: { number: surah.number } }">
