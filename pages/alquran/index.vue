@@ -4,7 +4,7 @@
         <!-- Surah -->
         <div>
 
-                <PartialsAlquranCardSurah />
+            <PartialsAlquranCardSurah />
 
         </div>
     </div>

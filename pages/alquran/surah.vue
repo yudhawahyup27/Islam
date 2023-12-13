@@ -107,7 +107,7 @@ export default {
     data() {
         return {
             surah: null,
-            loading: false,
+            loading: true,
             bukatafsir: false,
             error: null,
             openTab: 1
@@ -124,7 +124,6 @@ export default {
             this.loading = true;
             try {
                 const response = await axios.get(`https://quran-api-id.vercel.app/surahs/${this.$route.query.number}`);
-                // Make sure data is successfully retrieved before setting it to state
                 if (response.status === 200) {
                     this.surah = response.data;
                 }

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default defineNuxtConfig({
+export default ({
   app: {
     head: {
       title: 'Islam',
@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt','@hypernym/nuxt-gsap'],
   tailwindcss: {
     cssPath: '~/assets/css/tailwinds.css',
     configPath: 'tailwind.config.js',
@@ -21,6 +21,9 @@ export default defineNuxtConfig({
     config: {},
     injectPosition: 'first',
     viewer: true,
+  },
+  env: {
+    API_SURAH: process.env.API_SURAH || "https://quran-api-id.vercel.app/surahs",
   },
   // plugins: [
   //   '~/plugins/axios',
