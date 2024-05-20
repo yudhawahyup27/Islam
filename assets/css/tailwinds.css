@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.nuxt-link-active,
+.router-link-active,
+.router-link-exact-active {
+  color: rgb(21, 128, 61);
+  text-decoration: none;
+  font-weight: bold;
+}
 @layer base {
   h1 {
     @apply text-2xl;
@@ -16,4 +30,3 @@
     @apply text-blue-600 underline;
   }
 }
-

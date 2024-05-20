@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between">
         <router-link
           to="/"
-          class="text-xl font-bold text-black md:text-2xl hover:text-indigo-400"
+          class="text-xl font-bold text-black md:text-2xl hover:text-green-700"
           ><img src="@/assets/img/logo.png" class="h-20" alt="" srcset="" />
         </router-link>
         <!-- Mobile menu button -->
@@ -28,12 +28,22 @@
         :class="showMenu ? 'flex' : 'hidden'"
         class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0"
       >
-        <li class="text-black hover:text-indigo-400">Home</li>
-        <li class="text-black hover:text-indigo-400">
-          <nuxt-link to="/alquran">Al-quran</nuxt-link>
+        <li class="text-black">
+          <nuxt-link
+            class="hover:text-white hover:bg-green-700 p-2 rounded-full"
+            to="/"
+            >Home</nuxt-link
+          >
         </li>
-        <li class="text-black hover:text-indigo-400">Blogs</li>
-        <li class="text-black hover:text-indigo-400">Contact Us</li>
+        <li class="text-black">
+          <nuxt-link
+            class="hover:text-white hover:bg-green-700 p-2 rounded-full"
+            to="/alquran"
+            >Al-quran</nuxt-link
+          >
+        </li>
+        <li class="text-black hover:text-green-700">Blogs</li>
+        <li class="text-black hover:text-green-700">Contact Us</li>
       </ul>
     </nav>
   </div>
