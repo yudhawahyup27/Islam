@@ -33,6 +33,7 @@ export const useSuratStore = defineStore("surat", {
       console.log("action fetchSuratById");
       try {
         this.loading = true;
+        console.log("aku padamu");
         const { data } = await axios.get(
           `https://quran-endpoint.vercel.app/quran/${nomor}`
         );

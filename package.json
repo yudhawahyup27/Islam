@@ -15,15 +15,18 @@
     "@nuxtjs/eslint-module": "latest",
     "@nuxtjs/tailwindcss": "latest",
     "nuxt": "^3.8.0",
+    "nuxt-security": "^2.0.0-beta.5",
     "vue": "^3.3.7",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
     "@nuxtjs/composition-api": "^0.33.1",
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/proxy": "^2.1.0",
     "@pinia/nuxt": "^0.5.1",
     "axios": "^1.6.0",
     "cypress": "^13.6.1",
+    "nuxt-helm": "^0.0.2",
     "pinia": "^2.1.7",
     "tailwindcss": "^3.3.5",
     "vue-konva": "^3.0.2"

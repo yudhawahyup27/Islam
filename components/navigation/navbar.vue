@@ -42,7 +42,13 @@
             >Al-quran</nuxt-link
           >
         </li>
-        <li class="text-black hover:text-green-700">Blogs</li>
+        <li class="text-black">
+          <nuxt-link
+            class="hover:text-white hover:bg-green-700 p-2 rounded-full"
+            to="/Doa"
+            >Doa</nuxt-link
+          >
+        </li>
         <li class="text-black hover:text-green-700">Contact Us</li>
       </ul>
     </nav>
