@@ -20,7 +20,7 @@
       <span class=""> Info Surah</span>
     </div>
     <!-- Fixed Header -->
-    <div class="fixed bg-green-700 left-4 rounded-md bottom-auto">
+    <div class="fixed bg-green-700 rounded-md bottom-3">
       <div class="flex justify-between">
         <div class="px-2">
           <nuxt-link
