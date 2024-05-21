@@ -2,14 +2,14 @@
   <div class="mx-2">
     <PartialsAlquranBanner class="my-2" />
     <!-- Card -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
       <div
         v-for="surat in surats"
-        :key="surat.nomor"
+        :key="surat.number"
         class="flex flex-wrap justify-between p-4 rounded-md border-2 border-green-700"
-      > 
+      >
         <nuxt-link
-          :to="{ path: 'surah/', query: { nomor: surat.nomor } }"
+          :to="{ name: 'alquran-surah-nomor', params: { nomor: surat.number } }"
           class="w-full"
         >
           <div class="flex flex-wrap justify-between">
@@ -18,26 +18,24 @@
                 class="relative w-10 h-10 bg-green-700 rounded-md rotate-45 flex items-center justify-center"
               >
                 <span class="counter-rotate -rotate-45 text-white">{{
-                  surat.nomor
+                  surat.number
                 }}</span>
               </div>
               <div class="flex flex-col">
                 <div>
-                  <span>{{ surat.nama_latin }}</span>
+                  <span>{{ surat.asma.id.long }}</span>
                 </div>
                 <div>
-                  <small>{{ surat.arti }}</small>
+                  <small>{{ surat.asma.translation.id }}</small>
                 </div>
               </div>
             </div>
             <div class="flex flex-col">
-              <div>
-                <span class="text-left">{{ surat.nama }}</span>
+              <div class="text-right">
+                <span class="">{{ surat.asma.ar.short }}</span>
               </div>
               <div>
-                <small
-                  >{{ surat.jumlah_ayat }} | {{ surat.tempat_turun }}</small
-                >
+                <small>{{ surat.ayahCount }} | {{ surat.type.id }}</small>
               </div>
             </div>
           </div>
