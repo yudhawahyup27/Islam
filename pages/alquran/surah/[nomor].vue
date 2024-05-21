@@ -20,11 +20,11 @@
       <span class=""> Info Surah</span>
     </div>
     <!-- Fixed Header -->
-    <div class="">
+    <div class="fixed right-4 top-auto">
       <div class="flex justify-between">
         <div class="px-2">
           <nuxt-link
-            class=" bg-green-700 rounded-full px-2 text-white"
+            class="bg-green-700 rounded-full px-2 text-white"
             :to="'/alquran/surah/' + (surah.number - 1)"
             :class="{ hidden: surah.number === 1 }"
           >
@@ -33,7 +33,7 @@
           </nuxt-link>
         </div>
 
-        <div class="px-2">
+        <div class="">
           <nuxt-link
             class="bg-green-700 text-white rounded-full px-2"
             :to="'/alquran/surah/' + (surah.number + 1)"
@@ -53,7 +53,7 @@
           <span>{{ ayah.number.insurah }}</span>
         </div>
       </div>
-      <p class="mx-6 text-left my-2">{{ ayah.translation.id }}</p>
+      <p class="mx-6 text-justify my-2">{{ ayah.translation.id }}</p>
     </div>
   </div>
 </template>
