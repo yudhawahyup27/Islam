@@ -44,5 +44,15 @@ export const useHadithStore = defineStore("hadith", {
         console.error("Error fetching hadith details:", error);
       }
     },
+    async fetchHadithDetailsBySurahId(id: number, name: string) {
+      try {
+        const response = await axios.get(
+          `https://api.hadith.gading.dev/books/${name}/${id}`
+        );
+        this.hadiths = response.data.data; // Assuming the data is in the 'data' property
+      } catch (error) {
+        console.error("Error fetching hadith details by Surah ID:", error);
+      }
+    },
   },
 });

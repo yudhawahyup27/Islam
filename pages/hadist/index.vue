@@ -25,7 +25,6 @@
 </template>
 
 <script>
-
 import { useHadithStore } from "~/store/hadist";
 
 export default {
@@ -41,3 +40,19 @@ export default {
   },
 };
 </script>
+
+<style>
+.number {
+  background-image: url("/assets/img/number.svg");
+
+  margin: 14px 16px 0 0;
+  width: 41px;
+  height: 48px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

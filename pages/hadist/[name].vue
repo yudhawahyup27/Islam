@@ -1,16 +1,25 @@
 <template>
   <div class="mx-4">
-    <h1 class="text-center">Hadith Detail</h1>
-    <div v-if="hadiths.length" class="grid grid-cols-1 text-justify  md:grid-cols-2 gap-2">
+    <div
+      v-if="hadiths.length"
+      class="grid grid-cols-1 text-justify md:grid-cols-2 gap-2"
+    >
       <div
         v-for="(hadith, index) in hadiths"
         :key="index"
         class="bg-green-700 flex justify-between w-full p-2 rounded-md"
       >
-        <div class="flex flex-col text-white gap-4">
-          <h2>{{ hadith.number }}</h2>
-          <p>{{ hadith.arab }}</p>
-          <p>{{ hadith.id }}</p>
+        <div class="">
+          <nuxt-link
+            class="flex flex-col text-white p-2 gap-4"
+            :to="`/hadist/detail/${$route.params.name}/${hadith.number}`"
+          >
+            <div class="number">
+              <span>{{ hadith.number }}</span>
+            </div>
+            <p>{{ hadith.arab }}</p>
+            <p>{{ hadith.id }}</p>
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -38,8 +47,6 @@
 </template>
 
 <script>
-import { ref, watch } from "vue";
-import { useRoute } from "vue-router";
 import { useHadithStore } from "~/store/hadist";
 
 export default {
