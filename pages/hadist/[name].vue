@@ -1,7 +1,7 @@
 <template>
   <div class="mx-4">
     <h1 class="text-center">Hadith Detail</h1>
-    <div v-if="hadiths.length" class="grid grid-cols-2 gap-2">
+    <div v-if="hadiths.length" class="grid grid-cols-1 text-justify  md:grid-cols-2 gap-2">
       <div
         v-for="(hadith, index) in hadiths"
         :key="index"
