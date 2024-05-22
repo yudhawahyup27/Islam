@@ -49,7 +49,14 @@
             >Doa</nuxt-link
           >
         </li>
-        <li class="text-black hover:text-green-700">Contact Us</li>
+
+        <li class="text-black">
+          <nuxt-link
+            class="hover:text-white hover:bg-green-700 p-2 rounded-full"
+            to="/hadist"
+            >hadist</nuxt-link
+          >
+        </li>
       </ul>
     </nav>
   </div>
