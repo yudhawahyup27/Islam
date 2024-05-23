@@ -11,8 +11,8 @@
         <p>{{ hadithDetail.id }}</p>
       </div>
     </div>
-    <div v-else>
-      <p>Loading...</p>
+    <div class="loading" v-else>
+      <PartialsLoading />
     </div>
   </div>
 </template>

@@ -23,8 +23,8 @@
         </div>
       </div>
     </div>
-    <div v-else>
-      <p>Loading...</p>
+    <div class="loading" v-else>
+      <PartialsLoading />
     </div>
     <div class="flex justify-center mt-4">
       <button
@@ -104,5 +104,5 @@ export default {
 </script>
 
 <style scoped>
-/* Tambahkan styling sesuai kebutuhan */
+
 </style>

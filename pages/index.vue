@@ -1,6 +1,9 @@
 <template>
   <div>
     <PartialsLandingBanner />
+
+    
+
     <!-- Quotes -->
     <div class="grid grid-cols-1 md:grid-cols-2 p-4 my-4 shadow-sm mx-4">
       <div>

@@ -7,8 +7,6 @@ a {
   color: black;
 }
 
-
-
 .nuxt-link-active,
 .router-link-active,
 .router-link-exact-active {
@@ -29,4 +27,8 @@ a {
   a {
     @apply text-blue-600 underline;
   }
+}
+.loading {
+  display: flex;
+  justify-content: center;
 }
