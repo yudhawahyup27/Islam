@@ -15,7 +15,10 @@
         </div>
         <span>Sholat (Soon)</span>
       </div>
-      <div class="text-center max-w-24 text-green-700 font-bold">
+      <nuxt-link
+        to="/alquran/"
+        class="text-center max-w-24 text-green-700 font-bold"
+      >
         <div class="p-4 rounded-lg shadow-xl">
           <img
             width="64"
@@ -26,7 +29,7 @@
           />
         </div>
         <span>Alquran</span>
-      </div>
+      </nuxt-link>
       <div class="text-center max-w-24 text-green-700 font-bold">
         <div class="p-4 rounded-lg shadow-xl">
           <img
