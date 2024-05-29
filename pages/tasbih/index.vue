@@ -1,49 +1,59 @@
 <template>
-  <div class="text-center my-2">
-    <h1 class="text-center">Tasbih Online</h1>
-    <h2 class="mx-auto rounded-full p-2 my-2 text-white bg-green-700 w-10 h-10">
-      {{ jumlahDzikir }}
-    </h2>
+  <div class="text-center ">
+    <h1 class="text-center font-bold text-green-700 mt-5">Tasbih Online</h1>
 
-    <input
-      type="number"
-      class="border-2 border-green-500 my-4"
-      v-model="target"
-    />
-
-    <div class="flex justify-center">
-      <button
+    <div class="flex my-44 flex-col justify-center items-center">
+      <h2
         @click.prevent="clickDzikir"
-        class="bg-green-700 my-4 p-4 w-44 h-44 text-white rounded-full"
+        class="mx-auto rounded-full p-2 flex justify-center items-center text-xl font-bold text-white bg-green-700 w-20 h-20"
       >
-        Click
-      </button>
-      <button
-        @click.prevent="reset"
-        class="bg-green-700 my-4 p-4 w-44 h-44 text-white rounded-full"
+        {{ counter }}
+      </h2>
+      <div
+        :class="{ 'grid-cols-1': counter === 0, 'grid-cols-2': counter !== 0 }"
+        class="grid gap-4"
       >
-        reset
-      </button>
+        <button
+          :class="{ hidden: counter == 0 }"
+          @click.prevent="reset"
+          class="text-xs my-4 p-1 text-green-700"
+        >
+          Reset
+        </button>
+        <input
+          type="number"
+          class="border-green-500 text-center my-4"
+          v-model="target"
+          min="0"
+        />
+      </div>
     </div>
+
+    <!-- Input untuk mengatur target -->
+
+    <!-- Tombol-tombol untuk melakukan klik dan reset -->
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 
-const reset = () => {
-  jumlahDzikir.value = 0;
+// Inisialisasi variabel target dan counter
+const target = ref(33);
+const counter = ref(0);
+
+// Fungsi untuk melakukan klik pada dzikir
+const clickDzikir = () => {
+  if (counter.value === target.value) {
+    counter.value = 0;
+  } else {
+    counter.value++;
+  }
 };
 
-const jumlahDzikir = ref(0);
-const target = ref(33); // Inisialisasi nilai target
-
-const clickDzikir = () => {
-  if (jumlahDzikir.value === target.value) {
-    jumlahDzikir.value = 0;
-  } else {
-    jumlahDzikir.value++;
-  }
+// Fungsi untuk mereset counter menjadi 0
+const reset = () => {
+  counter.value = 0;
 };
 </script>
 
