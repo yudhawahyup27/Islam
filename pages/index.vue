@@ -16,7 +16,7 @@
         <span>Sholat (Soon)</span>
       </div>
       <nuxt-link
-        to="/alquran/"
+        to="/alquran"
         class="text-center max-w-24 text-green-700 font-bold"
       >
         <div class="p-4 rounded-lg shadow-xl">
