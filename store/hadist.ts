@@ -8,6 +8,7 @@ export const useHadithStore = defineStore("hadith", {
     totalHadiths: 0,
     currentPage: 1,
     limit: 20,
+    loading: false,
   }),
   getters: {
     getHadiths(state) {
@@ -17,10 +18,13 @@ export const useHadithStore = defineStore("hadith", {
   actions: {
     async fetchHadiths() {
       try {
+        this.loading = true;
         const { data } = await axios.get("https://api.hadith.gading.dev/books");
         this.hadiths = data.data;
       } catch (error) {
         console.error("Error fetching hadiths:", error);
+      } finally {
+        this.loading = false;
       }
     },
     async fetchHadithDetails(name: string, page: number, limit: number) {

@@ -29,7 +29,7 @@
               href="#"
               class="block w-full rounded bg-green-700 px-12 py-3 text-sm font-medium text-white shadow hover:bg-green-700 focus:outline-none focus:ring active:bg-green-700 sm:w-auto"
             >
-              Get Started
+              Download Playstore (soon)
             </a>
 
             <a

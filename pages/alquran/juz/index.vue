@@ -6,7 +6,6 @@
       arabicText="عَنْ أَبي أُمَامَةَ الْبَاهِلِىُّ رضى الله عنه قَالَ سَمِعْتُ رَسُولَ اللَّهِ -صلى الله عليه وسلم- يَقُولُ اقْرَءُوا الْقُرْآنَ فَإِنَّهُ يَأْتِى يَوْمَ الْقِيَامَةِ شَفِيعًا لأَصْحَابِهِ"
       translation="“Aisyah radhiyallahu ‘anha meriwayatkan bahwa Rasulullah shallallahu ‘alaihi wasallam bersabda: “Seorang yang lancar membaca Al Quran akan bersama para malaikat yang mulia dan senantiasa selalu taat kepada Allah, adapun yang membaca Al Quran dan terbata-bata di dalamnya dan sulit atasnya bacaan tersebut maka baginya dua pahala” (HR. Muslim)."
     />
-
     <div class="flex justify-center gap-4 my-4">
       <nuxt-link
         class="bg-green-700 text-center w-16 p-2 text-white rounded-md"
@@ -29,11 +28,11 @@
       v-else
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-4"
     >
-      <CardAlquran
-        v-for="surat in surats"
-        :key="surat.number"
-        :surat="surat"
-        @selectSurah="handleSelectSurah"
+      <CardJuz
+        v-for="juz in juzs"
+        :key="juz.number"
+        :juz="juz"
+        @selectJuz="handleSelectJuz"
       />
     </div>
   </div>
@@ -42,28 +41,28 @@
 <script>
 import Loading from "~/components/partials/loading.vue";
 import PartialsBanner from "~/components/partials/banner.vue"; // Adjust path as needed
-import CardAlquran from "~/components/partials/alquran/cardAlquran.vue";
+import CardJuz from "~/components/partials/alquran/cardJuz.vue";
 import { useSuratStore } from "~/store/alquran";
 
 export default {
-  components: { Loading, PartialsBanner, CardAlquran },
+  components: { Loading, PartialsBanner, CardJuz },
   data() {
     return {
-      surats: [],
+      juzs: [],
       loading: true,
     };
   },
   async created() {
     const suratStore = useSuratStore();
-    await suratStore.fetchSurats();
-    this.surats = suratStore.getSurats;
-    console.log(this.surats, "mu");
+    await suratStore.fetchJuz();
+    this.juzs = suratStore.getJuz; // Ubah menjadi this.juzs = suratStore.getJuz;
+    console.log(this.juzs, "yudha");
     this.loading = false;
   },
   methods: {
-    handleSelectSurah(number) {
+    handleSelectJuz(number) {
       this.$router.push({
-        name: "alquran-surah-nomor",
+        name: "alquran-Juz-nomor",
         params: { nomor: number },
       });
     },

@@ -4,11 +4,15 @@ import axios from "axios";
 export const useSuratStore = defineStore("surat", {
   state: () => ({
     surats: [],
+    juzs: [],
     surat: null, // Add a state to hold a single surat
     loading: false,
     error: null,
   }),
   getters: {
+    getJuz(state) {
+      return state.juzs;
+    },
     getSurats(state) {
       return state.surats;
     },
@@ -18,13 +22,26 @@ export const useSuratStore = defineStore("surat", {
   },
   actions: {
     async fetchSurats() {
+      this.loading = true;
+      this.error = null;
       try {
         const { data } = await axios.get(
-          "https://quran-endpoint.vercel.app/quran"
+          "https://api.dikiotang.com/quran/surah/"
         );
         this.surats = data.data;
       } catch (error) {
         console.error(error);
+      } finally {
+        this.loading = false;
+      }
+    },
+    async fetchJuz() {
+      this.loading = true;
+      try {
+        const { data } = await axios.get("https://api.dikiotang.com/quran/juz/");
+        this.juzs = data.data;
+      } catch (error) {
+        console.log(error);
       } finally {
         this.loading = false;
       }

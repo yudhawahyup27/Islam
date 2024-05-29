@@ -2,7 +2,116 @@
   <div>
     <PartialsLandingBanner />
 
-    
+    <div class="grid grid-cols-3 md:grid-cols-4 justify-items-center">
+      <div class="text-center max-w-24 text-green-700 font-bold">
+        <div class="p-4 rounded-lg shadow-xl">
+          <img
+            width="64"
+            class="mx-auto"
+            height="64"
+            src="../assets/img/tasbih.png"
+            alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
+          />
+        </div>
+        <span>Sholat (Soon)</span>
+      </div>
+      <div class="text-center max-w-24 text-green-700 font-bold">
+        <div class="p-4 rounded-lg shadow-xl">
+          <img
+            width="64"
+            class="mx-auto"
+            height="64"
+            src="../assets/img/tasbih.png"
+            alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
+          />
+        </div>
+        <span>Alquran</span>
+      </div>
+      <div class="text-center max-w-24 text-green-700 font-bold">
+        <div class="p-4 rounded-lg shadow-xl">
+          <img
+            width="64"
+            class="mx-auto"
+            height="64"
+            src="../assets/img/tasbih.png"
+            alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
+          />
+        </div>
+        <span>Doa</span>
+      </div>
+      <div class="text-center max-w-24 text-green-700 font-bold">
+        <div class="p-4 rounded-lg shadow-xl">
+          <img
+            width="64"
+            class="mx-auto"
+            height="64"
+            src="../assets/img/tasbih.png"
+            alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
+          />
+        </div>
+        <span>Tashbih</span>
+      </div>
+      <div class="text-center max-w-24 text-green-700 font-bold">
+        <div class="p-4 rounded-lg shadow-xl">
+          <img
+            width="64"
+            class="mx-auto"
+            height="64"
+            src="../assets/img/tasbih.png"
+            alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
+          />
+        </div>
+        <span>Asmaul husna</span>
+      </div>
+      <div class="text-center max-w-24 text-green-700 font-bold">
+        <div class="p-4 rounded-lg shadow-xl">
+          <img
+            width="64"
+            class="mx-auto"
+            height="64"
+            src="../assets/img/tasbih.png"
+            alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
+          />
+        </div>
+        <span>Zikir</span>
+      </div>
+      <div class="text-center max-w-24 text-green-700 font-bold">
+        <div class="p-4 rounded-lg shadow-xl">
+          <img
+            width="64"
+            class="mx-auto"
+            height="64"
+            src="../assets/img/tasbih.png"
+            alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
+          />
+        </div>
+        <span>Hadist</span>
+      </div>
+      <div class="text-center max-w-24 text-green-700 font-bold">
+        <div class="p-4 rounded-lg shadow-xl">
+          <img
+            width="64"
+            class="mx-auto"
+            height="64"
+            src="../assets/img/tasbih.png"
+            alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
+          />
+        </div>
+        <span>Kurban (soon)</span>
+      </div>
+      <div class="text-center max-w-24 text-green-700 font-bold">
+        <div class="p-4 rounded-lg shadow-xl">
+          <img
+            width="64"
+            class="mx-auto"
+            height="64"
+            src="../assets/img/tasbih.png"
+            alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
+          />
+        </div>
+        <span>Zakat (soon)</span>
+      </div>
+    </div>
 
     <!-- Quotes -->
     <div class="grid grid-cols-1 md:grid-cols-2 p-4 my-4 shadow-sm mx-4">
@@ -15,7 +124,6 @@
         <img :src="surah.image.primary" alt="Surah " style="max-width: 100%" />
         <p class="text-right">{{ surah.translation }}</p>
       </div>
-     
     </div>
   </div>
 </template>
