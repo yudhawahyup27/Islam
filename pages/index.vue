@@ -30,7 +30,10 @@
         </div>
         <span>Alquran</span>
       </nuxt-link>
-      <div class="text-center max-w-24 text-green-700 font-bold">
+      <nuxt-link
+        to="/doa"
+        class="text-center max-w-24 text-green-700 font-bold"
+      >
         <div class="p-4 rounded-lg shadow-xl">
           <img
             width="64"
@@ -41,8 +44,11 @@
           />
         </div>
         <span>Doa</span>
-      </div>
-      <div class="text-center max-w-24 text-green-700 font-bold">
+      </nuxt-link>
+      <nuxt-link
+        to="/tasbih"
+        class="text-center max-w-24 text-green-700 font-bold"
+      >
         <div class="p-4 rounded-lg shadow-xl">
           <img
             width="64"
@@ -52,9 +58,12 @@
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
-        <span>Tashbih</span>
-      </div>
-      <div class="text-center max-w-24 text-green-700 font-bold">
+        <span>Tasbih</span>
+      </nuxt-link>
+      <nuxt-link
+        to="/asma"
+        class="text-center max-w-24 text-green-700 font-bold"
+      >
         <div class="p-4 rounded-lg shadow-xl">
           <img
             width="64"
@@ -65,7 +74,7 @@
           />
         </div>
         <span>Asmaul husna</span>
-      </div>
+      </nuxt-link>
       <div class="text-center max-w-24 text-green-700 font-bold">
         <div class="p-4 rounded-lg shadow-xl">
           <img
@@ -78,7 +87,10 @@
         </div>
         <span>Zikir</span>
       </div>
-      <div class="text-center max-w-24 text-green-700 font-bold">
+      <nuxt-link
+        to="/hadist"
+        class="text-center max-w-24 text-green-700 font-bold"
+      >
         <div class="p-4 rounded-lg shadow-xl">
           <img
             width="64"
@@ -89,7 +101,7 @@
           />
         </div>
         <span>Hadist</span>
-      </div>
+      </nuxt-link>
       <div class="text-center max-w-24 text-green-700 font-bold">
         <div class="p-4 rounded-lg shadow-xl">
           <img

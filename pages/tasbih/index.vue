@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center ">
+  <div class="text-center">
     <h1 class="text-center font-bold text-green-700 mt-5">Tasbih Online</h1>
 
     <div class="flex my-44 flex-col justify-center items-center">
@@ -44,11 +44,8 @@ const counter = ref(0);
 
 // Fungsi untuk melakukan klik pada dzikir
 const clickDzikir = () => {
-  if (counter.value === target.value) {
-    counter.value = 0;
-  } else {
-    counter.value++;
-  }
+  const dzikir = counter.value === target.value;
+  dzikir ? (counter.value = 0) : counter.value++;
 };
 
 // Fungsi untuk mereset counter menjadi 0
