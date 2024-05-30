@@ -2,14 +2,14 @@
   <div>
     <PartialsLandingBanner />
 
-    <div class="grid grid-cols-3 md:grid-cols-4 justify-items-center">
+    <div class="grid grid-cols-3 md:grid-cols-4 justify-items-center my-4">
       <div class="text-center max-w-24 text-green-700 font-bold">
         <div class="p-4 rounded-lg shadow-xl">
           <img
             width="64"
             class="mx-auto"
             height="64"
-            src="../assets/img/tasbih.png"
+            src="https://cdn-icons-png.flaticon.com/128/5003/5003209.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
@@ -24,7 +24,7 @@
             width="64"
             class="mx-auto"
             height="64"
-            src="../assets/img/tasbih.png"
+            src="https://cdn-icons-png.flaticon.com/128/3165/3165231.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
@@ -39,7 +39,7 @@
             width="64"
             class="mx-auto"
             height="64"
-            src="../assets/img/tasbih.png"
+            src="https://cdn-icons-png.flaticon.com/128/9991/9991939.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
@@ -54,7 +54,7 @@
             width="64"
             class="mx-auto"
             height="64"
-            src="../assets/img/tasbih.png"
+            src="https://cdn-icons-png.flaticon.com/128/15320/15320774.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
@@ -69,7 +69,7 @@
             width="64"
             class="mx-auto"
             height="64"
-            src="../assets/img/tasbih.png"
+            src="https://cdn-icons-png.flaticon.com/128/2914/2914720.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
@@ -84,7 +84,7 @@
             width="64"
             class="mx-auto"
             height="64"
-            src="../assets/img/tasbih.png"
+            src="https://cdn-icons-png.flaticon.com/128/14192/14192559.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
@@ -99,7 +99,7 @@
             width="64"
             class="mx-auto"
             height="64"
-            src="../assets/img/tasbih.png"
+            src="https://cdn-icons-png.flaticon.com/128/4407/4407161.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
@@ -111,7 +111,7 @@
             width="64"
             class="mx-auto"
             height="64"
-            src="../assets/img/tasbih.png"
+            src="https://cdn-icons-png.flaticon.com/128/4840/4840215.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
@@ -123,7 +123,7 @@
             width="64"
             class="mx-auto"
             height="64"
-            src="../assets/img/tasbih.png"
+            src="https://cdn-icons-png.flaticon.com/128/2645/2645341.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
