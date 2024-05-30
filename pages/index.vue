@@ -3,7 +3,10 @@
     <PartialsLandingBanner />
 
     <div class="grid grid-cols-3 md:grid-cols-4 justify-items-center my-4">
-      <div class="text-center max-w-24 text-green-700 font-bold">
+      <nuxt-link
+        to="/sholat"
+        class="text-center max-w-24 text-green-700 font-bold"
+      >
         <div class="p-4 rounded-lg shadow-xl">
           <img
             width="64"
@@ -13,8 +16,8 @@
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
         </div>
-        <span>Sholat (Soon)</span>
-      </div>
+        <span>Sholat</span>
+      </nuxt-link>
       <nuxt-link
         to="/alquran"
         class="text-center max-w-24 text-green-700 font-bold"
