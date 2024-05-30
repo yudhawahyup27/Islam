@@ -74,60 +74,6 @@
       </span>
     </div>
 
-    <h2
-      class="text-green-700 border-green-700 border w-32 px-2 font-bold rounded-lg"
-    >
-      Dzikir 10x:
-    </h2>
-    <div class="loading" v-if="Loading">
-      <Loading />
-    </div>
-    <div
-      v-else
-      v-for="item in dzikir10x"
-      :key="item.arab"
-      class="bg-green-700 text-white p-4 w-22 mx-4 my-4 rounded-lg"
-    >
-      <span
-        class="float-start text-green-700 bg-white p-2 rounded-full w-10 h-10 flex justify-center items-center text-xs"
-      >
-        {{ item.type }}
-      </span>
-      <span class="text-right md:line-clamp-4 line-clamp-4 mb-2">
-        {{ item.arab }}
-      </span>
-      <span>
-        {{ item.indo }}
-      </span>
-    </div>
-
-    <h2
-      class="text-green-700 border-green-700 border w-36 px-2 font-bold rounded-lg"
-    >
-      Dzikir 100x:
-    </h2>
-    <div class="loading" v-if="Loading">
-      <Loading />
-    </div>
-    <div
-      v-else
-      v-for="item in dzikir100x"
-      :key="item.arab"
-      class="bg-green-700 text-white p-4 w-22 mx-4 my-4 rounded-lg"
-    >
-      <span
-        class="float-start text-green-700 bg-white p-2 rounded-full w-10 h-10 flex justify-center items-center text-xs"
-      >
-        {{ item.type }}
-      </span>
-      <span class="text-right md:line-clamp-4 line-clamp-4 mb-2">
-        {{ item.arab }}
-      </span>
-      <span>
-        {{ item.indo }}
-      </span>
-    </div>
-
     <!-- Sisipkan bagian untuk dzikir dengan pengulangan 10x dan 100x jika perlu -->
   </div>
 </template>
@@ -165,7 +111,7 @@ export default {
   },
   methods: {
     fetchDzikirData() {
-      fetch("https://api.dikiotang.com/dzikir/pagi")
+      fetch("https://api.dikiotang.com/dzikir/solat")
         .then((response) => response.json())
         .then((data) => {
           this.dzikirData = data.data;

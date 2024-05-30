@@ -14,7 +14,11 @@
             <th scope="col" class="px-6 py-3">Terjemah</th>
           </tr>
         </thead>
-        <tbody v-for="asma in asmas" :key="asma.id">
+
+        <div class="loading flex mx-4 items-center justify-center" v-if="Loading">
+          <Loading />
+        </div>
+        <tbody v-else v-for="asma in asmas" :key="asma.id">
           <tr
             class="odd:bg-white odd:dark:bg-green-900 even:bg-green-50 even:dark:bg-green-800 border-b dark:border-green-700"
           >
@@ -30,11 +34,15 @@
 </template>
 
 <script>
+import Loading from "~/components/partials/loading.vue";
 import { useAsmaStore } from "~/store/asma";
-
 export default {
+  components: {
+    Loading,
+  },
   data() {
     return {
+      Loading: true,
       asmas: [],
     };
   },
@@ -42,6 +50,7 @@ export default {
     const asmaStore = useAsmaStore();
     await asmaStore.fetchAsma();
     this.asmas = asmaStore.getAsma;
+    this.Loading = false;
   },
 };
 </script>

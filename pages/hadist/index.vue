@@ -1,7 +1,10 @@
 <template>
   <div class="mx-4">
     <h1 class="text-center">Hadith Collections</h1>
-    <div v-if="hadiths" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="loading flex mx-4 items-center justify-center" v-if="Loading">
+      <PartialsLoading />
+    </div>
+    <div v-else class="grid grid-cols-1 md:grid-cols-4 gap-4">
       <div
         v-for="hadith in hadiths"
         :key="hadith.id"
@@ -21,21 +24,20 @@
         </NuxtLink>
       </div>
     </div>
-    <div class="loading" v-else>
-      <PartialsLoading />
-    </div>
   </div>
 </template>
 
 <script>
 import { useHadithStore } from "~/store/hadist";
 import PartialsLoading from "~/components/partials/loading.vue";
+
 export default {
   components: {
     PartialsLoading,
   },
   data() {
     return {
+      Loading: true,
       hadiths: [],
     };
   },
@@ -43,6 +45,7 @@ export default {
     const hadithsStore = useHadithStore();
     await hadithsStore.fetchHadiths();
     this.hadiths = hadithsStore.getHadiths;
+    this.Loading = false;
   },
 };
 </script>
