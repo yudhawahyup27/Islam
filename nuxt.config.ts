@@ -4,7 +4,12 @@ export default {
   app: {
     head: {
       title: "Islam",
-      meta: [{ name: "description", content: "Everything about - Nuxt-3" }],
+      meta: [
+        {
+          name: "description",
+          content: "Aplikasi Islam Terlengkap Panen Ibadahmu",
+        },
+      ],
       link: [
         {
           rel: "stylesheet",

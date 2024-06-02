@@ -9,49 +9,6 @@
     <h1 class="text-center text-green-700 font-bold my-2">
       {{ surah.asma.ar.long }}
     </h1>
-    <!-- <audio id="song" class="block w-full max-w-md mx-auto">
-      <source :src="audioSrc" type="audio/mpeg" />
-    </audio>
-    <button
-      class="bg-green-700 px-2 text-white rounded-full fixed right-4 z-1"
-      @click="togglePlayPause"
-    >
-      {{ buttonText }}
-    </button> -->
-
-    <div class="text-center my-2">
-      <button class="">
-        <img width="15" src="/assets/img/i.svg" alt="" />
-      </button>
-      <span class=""> Info Surah</span>
-    </div>
-    <!-- Fixed Header -->
-    <div class="fixed bg-green-700 rounded-md bottom-3">
-      <div class="flex justify-between">
-        <div class="px-2">
-          <nuxt-link
-            class="bg-green-700 rounded-full px-2 text-white"
-            :to="'/alquran/surah/' + (surah.number - 1)"
-            :class="{ hidden: surah.number === 1 }"
-          >
-            <small>sebelum</small> |
-            <small>Previous Surah</small>
-          </nuxt-link>
-        </div>
-
-        <div class="">
-          <nuxt-link
-            class="bg-green-700 text-white rounded-full px-2"
-            :to="'/alquran/surah/' + (surah.number + 1)"
-            :class="{ hidden: surah.number === 114 }"
-          >
-            <small>Sesudah</small> |
-            <small>Next Surah</small>
-          </nuxt-link>
-        </div>
-      </div>
-    </div>
-
 
     <div class="my-6" v-for="ayah in surah.ayahs" :key="ayah.number.inquran">
       <div class="flex justify-between flex-col-reverse flex-wrap gap-2">
@@ -63,10 +20,18 @@
       <p class="mx-6 text-justify my-2">{{ ayah.translation.id }}</p>
       <div class="mx-6">
         <ul class="flex gap-2">
-          <!-- <li>Booksmask</li> -->
+          <!-- Audio -->
+          <li >
+            <button class="flex flex-cols gap-2" @click="togglePlayPause(ayah.number.inquran, ayah.audio.url)">
+             <img width="20" src="/assets/img/play.svg" alt="">  {{ buttonText(ayah.number.inquran) }}
+            </button>
+          </li>
           <!-- Tombol Salin -->
-          <li><button  @click="copyText(ayah.text.ar, ayah.translation.id)">Salin</button></li>
-          <!-- <li>Tafsir</li> -->
+          <li>
+            <button class="flex gap-2" @click="copyText(ayah.text.ar, ayah.translation.id)">
+              <img width="20" src="/assets/img/copy.svg" alt="">   Salin
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -74,12 +39,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref } from "vue";
+import { useRoute } from "vue-router";
 
 const route = useRoute();
 const surah = ref(null);
-const buttonText = ref("Play");
+const playingAyah = ref(null); // ID ayat yang sedang diputar
+const audioElement = ref(null); // Elemen audio
 
 async function fetchSurah() {
   const res = await fetch(
@@ -91,36 +57,42 @@ async function fetchSurah() {
 
 fetchSurah();
 
-function togglePlayPause() {
-  const audio = document.getElementById("song");
-  if (audio.paused) {
-    audio.play();
-    buttonText.value = "Pause";
+function togglePlayPause(ayahId, audioUrl) {
+  if (playingAyah.value === ayahId) {
+    audioElement.value.pause();
+    playingAyah.value = null;
   } else {
-    audio.pause();
-    buttonText.value = "Play";
+    if (audioElement.value) {
+      audioElement.value.pause();
+    }
+    audioElement.value = new Audio(audioUrl);
+    audioElement.value.play();
+    playingAyah.value = ayahId;
+    audioElement.value.onended = () => {
+      playingAyah.value = null;
+    };
   }
 }
 
+function buttonText(ayahId) {
+  return playingAyah.value === ayahId ?  "Pause" : "Play";
+}
+
 // Fungsi untuk menyalin teks
-function copyText(arabicText, translationText) {
-  const combinedText = `${arabicText}\n${translationText}`; // Menggabungkan teks Arab dan terjemahan
-  const textarea = document.createElement('textarea');
-  textarea.value = combinedText;
-  document.body.appendChild(textarea);
+async function copyText(arabicText, translationText) {
+  const combinedText = `${arabicText}\n${translationText}`;
 
-  textarea.select();
-  document.execCommand('copy');
-
-  document.body.removeChild(textarea);
-
-  alert('Teks telah disalin!');
+  try {
+    await navigator.clipboard.writeText(combinedText);
+    alert("Teks telah disalin!");
+  } catch (error) {
+    alert("Tidak dapat menyalin teks. Mohon coba lagi.");
+  }
 }
 </script>
 
 <style>
-/* Add your custom styles here */
-
+/* Gaya CSS */
 .number {
   background-image: url("/assets/img/number.svg");
 
