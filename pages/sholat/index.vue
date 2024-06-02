@@ -1,16 +1,18 @@
 <template>
   <div class="p-4">
     <div class="grid grid-cols-2">
-
-        <input
-          v-model="kota"
-          @keyup.enter="searchKota"
-          placeholder="Masukkan nama kota"
-          class="border p-2 rounded w-f"
-        />
-        <button @click="searchKota" class="bg-green-700 text-white p-2 rounded ml-2">
-          Cari Kota
-        </button>
+      <input
+        v-model="kota"
+        @keyup.enter="searchKota"
+        placeholder="Masukkan nama kota"
+        class="border p-2 rounded w-f"
+      />
+      <button
+        @click="searchKota"
+        class="bg-green-700 text-white p-2 rounded ml-2"
+      >
+        Cari Kota
+      </button>
     </div>
 
     <!-- Daftar kota yang ditemukan -->
@@ -23,17 +25,13 @@
           @click="selectKota(city)"
           class="cursor-pointer hover:bg-gray-200 p-2 rounded"
         >
-          {{ city.lokasi }} (ID: {{ city.id }})
+          {{ city.lokasi }}
         </li>
       </ul>
     </div>
-
-    <!-- Jadwal sholat untuk kota yang dipilih -->
     <div v-if="jadwal">
-  
-      <table
-        class="w-full mt-4   border border-gray-300"
-      >
+      <h3 class="text-xl mt-4">Jadwal Sholat : {{ jadwal.lokasi }}, {{jadwal.daerah}}</h3>
+      <table class="w-full mt-4 border border-gray-300">
         <thead>
           <tr>
             <th class="border border-gray-300 px-4 py-2">Waktu Sholat</th>
@@ -95,7 +93,7 @@ export default {
 
 <style scoped>
 tr:nth-child(even) {
-    background: green;
-    color: white;
+  background: green;
+  color: white;
 }
 </style>

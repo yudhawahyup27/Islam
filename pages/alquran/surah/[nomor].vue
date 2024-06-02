@@ -52,6 +52,7 @@
       </div>
     </div>
 
+
     <div class="my-6" v-for="ayah in surah.ayahs" :key="ayah.number.inquran">
       <div class="flex justify-between flex-col-reverse flex-wrap gap-2">
         <h1 class="text-right text-wrap text-md mx-4">{{ ayah.text.ar }}</h1>
@@ -60,11 +61,22 @@
         </div>
       </div>
       <p class="mx-6 text-justify my-2">{{ ayah.translation.id }}</p>
+      <div class="mx-6">
+        <ul class="flex gap-2">
+          <!-- <li>Booksmask</li> -->
+          <!-- Tombol Salin -->
+          <li><button  @click="copyText(ayah.text.ar, ayah.translation.id)">Salin</button></li>
+          <!-- <li>Tafsir</li> -->
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+
 const route = useRoute();
 const surah = ref(null);
 const buttonText = ref("Play");
@@ -88,6 +100,21 @@ function togglePlayPause() {
     audio.pause();
     buttonText.value = "Play";
   }
+}
+
+// Fungsi untuk menyalin teks
+function copyText(arabicText, translationText) {
+  const combinedText = `${arabicText}\n${translationText}`; // Menggabungkan teks Arab dan terjemahan
+  const textarea = document.createElement('textarea');
+  textarea.value = combinedText;
+  document.body.appendChild(textarea);
+
+  textarea.select();
+  document.execCommand('copy');
+
+  document.body.removeChild(textarea);
+
+  alert('Teks telah disalin!');
 }
 </script>
 
