@@ -1,11 +1,5 @@
 <template>
   <div v-if="surah" class="mx-4">
-    <PartialsBanner
-      bannerImage="https://png.pngtree.com/thumb_back/fh260/background/20210324/pngtree-holy-alquran-background-design-image_590800.jpg"
-      title="Al Quran"
-      arabicText="عَنْ أَبي أُمَامَةَ الْبَاهِلِىُّ رضى الله عنه قَالَ سَمِعْتُ رَسُولَ اللَّهِ -صلى الله عليه وسلم- يَقُولُ اقْرَءُوا الْقُرْآنَ فَإِنَّهُ يَأْتِى يَوْمَ الْقِيَامَةِ شَفِيعًا لأَصْحَابِهِ"
-      translation="“Aisyah radhiyallahu ‘anha meriwayatkan bahwa Rasulullah shallallahu ‘alaihi wasallam bersabda: “Seorang yang lancar membaca Al Quran akan bersama para malaikat yang mulia dan senantiasa selalu taat kepada Allah, adapun yang membaca Al Quran dan terbata-bata di dalamnya dan sulit atasnya bacaan tersebut maka baginya dua pahala” (HR. Muslim)."
-    />
     <div class="fixed bg-green-700 rounded-md bottom-3">
       <div class="flex justify-between">
         <div class="px-2">
@@ -31,63 +25,79 @@
         </div>
       </div>
     </div>
-    <h1 class="text-center text-green-700 font-bold my-2">
-      {{ surah.asma.ar.long }}
-    </h1>
-
-    <div class="my-6" v-for="ayah in surah.ayahs" :key="ayah.number.inquran">
-      <div class="flex justify-between flex-col-reverse flex-wrap gap-2">
-        <h1 :class="ArabsizeText" class="text-right text-wrap text-md mx-4">
-          {{ ayah.text.ar }}
+    <div class="flex gap-2">
+      <PartialsAlquranSideBar />
+      <div>
+        <PartialsBanner
+          bannerImage="https://png.pngtree.com/thumb_back/fh260/background/20210324/pngtree-holy-alquran-background-design-image_590800.jpg"
+          title="Al Quran"
+          arabicText="عَنْ أَبي أُمَامَةَ الْبَاهِلِىُّ رضى الله عنه قَالَ سَمِعْتُ رَسُولَ اللَّهِ -صلى الله عليه وسلم- يَقُولُ اقْرَءُوا الْقُرْآنَ فَإِنَّهُ يَأْتِى يَوْمَ الْقِيَامَةِ شَفِيعًا لأَصْحَابِهِ"
+          translation="“Aisyah radhiyallahu ‘anha meriwayatkan bahwa Rasulullah shallallahu ‘alaihi wasallam bersabda: “Seorang yang lancar membaca Al Quran akan bersama para malaikat yang mulia dan senantiasa selalu taat kepada Allah, adapun yang membaca Al Quran dan terbata-bata di dalamnya dan sulit atasnya bacaan tersebut maka baginya dua pahala” (HR. Muslim)."
+        />
+        <h1 class="text-center text-green-700 font-bold my-2">
+          {{ surah.asma.ar.long }}
         </h1>
-        <div class="number">
-          <span>{{ ayah.number.insurah }}</span>
-        </div>
-      </div>
-      <p class="mx-6 text-justify my-2">{{ ayah.translation.id }}</p>
-      <div class="mx-6">
-        <ul class="flex gap-2">
-          <!-- Audio -->
-          <li>
-            <button
-              class="flex flex-cols gap-2"
-              @click="togglePlayPause(ayah.number.inquran, ayah.audio.url)"
-            >
-              <img width="20" src="/assets/img/play.svg" alt="" />
-              {{ buttonText(ayah.number.inquran) }}
-            </button>
-          </li>
-          <!-- Tombol Salin -->
-          <li>
-            <button
-              class="flex gap-2"
-              @click="copyText(ayah.text.ar, ayah.translation.id)"
-            >
-              <img width="20" src="/assets/img/copy.svg" alt="" /> Salin
-            </button>
-          </li>
-          <li>
-            <div class="flex gap-2">
-              <img width="20" src="/assets/img/text-size.svg" alt="" />
-              <button @click="kecilSize">A-</button> ||
-              <button @click="besarSize">A+</button>
+        <div
+          class="my-6"
+          v-for="ayah in surah.ayahs"
+          :key="ayah.number.inquran"
+          :ref="(el) => (ayahRefs[ayah.number.inquran] = el)"
+        >
+          <div class="flex justify-between flex-col-reverse flex-wrap gap-2">
+            <h1 :class="ArabsizeText" class="text-right text-wrap text-md mx-4">
+              {{ ayah.text.ar }}
+            </h1>
+            <div class="number">
+              <span>{{ ayah.number.insurah }}</span>
             </div>
-          </li>
-          <li class="flex gap-1">
-            <img width="20" src="/assets/img/menu.svg" alt="" />
-            <button @click="Menu">Menu</button>
-          </li>
-        </ul>
+          </div>
+          <p class="mx-6 text-justify my-2">{{ ayah.translation.id }}</p>
+          <div class="mx-6">
+            <ul class="flex gap-2">
+              <!-- Audio -->
+              <li>
+                <button
+                  class="flex flex-cols gap-2"
+                  @click="togglePlayPause(ayah.number.inquran, ayah.audio.url)"
+                >
+                  <img width="20" src="/assets/img/play.svg" alt="" />
+                  {{ buttonText(ayah.number.inquran) }}
+                </button>
+              </li>
+              <!-- Tombol Salin -->
+              <li>
+                <button
+                  class="flex gap-2"
+                  @click="copyText(ayah.text.ar, ayah.translation.id)"
+                >
+                  <img width="20" src="/assets/img/copy.svg" alt="" />
+                </button>
+              </li>
+              <li>
+                <div class="flex gap-2">
+                  <button @click="kecilSize">A-</button> |
+                  <button @click="besarSize">A+</button>
+                </div>
+              </li>
+              <li class="flex gap-1">
+                <img width="20" src="/assets/img/menu.svg" alt="" />
+                <button @click="Menu">Menu</button>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
+
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
 const surah = ref(null);
+const ayahRefs = {}; // Objek untuk menyimpan referensi ayat
 
 const sizeIndexText = ref(2);
 const sizeText = [
@@ -163,6 +173,12 @@ function playAyah(ayahId) {
       playingAyah.value = null;
     }
   };
+
+  // Scroll to the ayah card
+  const ayahElement = ayahRefs[ayahId];
+  if (ayahElement) {
+    ayahElement.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 }
 
 function getNextAyah(ayahId) {
@@ -191,6 +207,7 @@ async function copyText(arabicText, translationText) {
   }
 }
 </script>
+
 <style>
 /* Gaya CSS */
 .number {
