@@ -67,11 +67,15 @@
             </button>
           </li>
           <li>
-            <div class="flex">
+            <div class="flex gap-2">
               <img width="20" src="/assets/img/text-size.svg" alt="" />
               <button @click="kecilSize">A-</button> ||
               <button @click="besarSize">A+</button>
             </div>
+          </li>
+          <li class="flex gap-1">
+            <img width="20" src="/assets/img/menu.svg" alt="" />
+            <button @click="Menu">Menu</button>
           </li>
         </ul>
       </div>
@@ -101,6 +105,11 @@ const sizeText = [
   "text-8xl",
   "text-9xl",
 ];
+
+const Menu = () => {
+  alert("Masih Dalam Pengerjaan");
+};
+
 const ArabsizeText = computed(() => sizeText[sizeIndexText.value]);
 const playingAyah = ref(null); // ID ayat yang sedang diputar
 const audioElement = ref(null); // Elemen audio
