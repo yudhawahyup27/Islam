@@ -1,8 +1,14 @@
 <template>
-  <div v-if="surah" class="mx-4">
+  <div v-if="surah" class="mx-2">
     <div class="fixed bg-green-700 rounded-md bottom-3">
-      <div class="flex justify-between">
-        <div class="px-2">
+      <div class="flex justify-between mx-2">
+        <div class="flex gap-1">
+          <img width="20" src="/assets/img/menu.svg" alt="" />
+          <button @click="Menu" class="text-white text-sm">filter</button>
+        </div>
+
+        <div class="px-2 text-white">
+          |
           <nuxt-link
             class="bg-green-700 rounded-full px-2 text-white"
             :to="'/alquran/surah/' + (surah.number - 1)"
@@ -26,8 +32,8 @@
       </div>
     </div>
     <div class="flex gap-2">
-      <PartialsAlquranSideBar />
-      <div>
+      <PartialsAlquranSideBar class="" />
+      <div class="basis-full">
         <PartialsBanner
           bannerImage="https://png.pngtree.com/thumb_back/fh260/background/20210324/pngtree-holy-alquran-background-design-image_590800.jpg"
           title="Al Quran"
@@ -71,6 +77,7 @@
                   @click="copyText(ayah.text.ar, ayah.translation.id)"
                 >
                   <img width="20" src="/assets/img/copy.svg" alt="" />
+                  Salin
                 </button>
               </li>
               <li>
@@ -78,10 +85,6 @@
                   <button @click="kecilSize">A-</button> |
                   <button @click="besarSize">A+</button>
                 </div>
-              </li>
-              <li class="flex gap-1">
-                <img width="20" src="/assets/img/menu.svg" alt="" />
-                <button @click="Menu">Menu</button>
               </li>
             </ul>
           </div>
