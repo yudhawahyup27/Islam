@@ -169,6 +169,7 @@ function playAyah(ayahId) {
   audioElement.value.play();
   playingAyah.value = ayahId;
   audioElement.value.onended = () => {
+    console.log("Playing Stop");
     const nextAyah = getNextAyah(ayahId);
     if (nextAyah) {
       playAyah(nextAyah.number.inquran);
