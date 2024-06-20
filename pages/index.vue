@@ -121,7 +121,7 @@
         <span>Kurban (soon)</span>
       </div>
       <div class="text-center max-w-24 text-green-700 font-bold">
-        <div class="p-4 rounded-lg shadow-xl">
+        <nuxt-link to="/zakat" class="p-4 rounded-lg shadow-xl">
           <img
             width="64"
             class="mx-auto"
@@ -129,7 +129,7 @@
             src="https://cdn-icons-png.flaticon.com/128/2645/2645341.png"
             alt="external-Scripture-islamic-flat-icon-filled-line-kendis-lasman"
           />
-        </div>
+        </nuxt-link>
         <span>Zakat (soon)</span>
       </div>
     </div>

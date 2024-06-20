@@ -24,7 +24,7 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/proxy": "^2.1.0",
     "@pinia/nuxt": "^0.5.1",
-    "axios": "^1.6.0",
+    "axios": "^1.6.8",
     "cypress": "^13.6.1",
     "nuxt-helm": "^0.0.2",
     "nuxt-storage": "^1.2.2",
