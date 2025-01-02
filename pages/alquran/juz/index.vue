@@ -60,10 +60,10 @@ export default {
     this.loading = false;
   },
   methods: {
-    handleSelectJuz(nomor) {
+    handleSelectJuz(number) {
       this.$router.push({
         name: "alquran-Juz-nomor",
-        params: { nomor: nomor },
+        params: { nomor: number },
       });
     },
   },

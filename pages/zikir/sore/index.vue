@@ -13,12 +13,12 @@
         >
           Dzikir Sore
         </nuxt-link>
-        <nuxt-link
+        <!-- <nuxt-link
           class="bg-green-700 w-20 text-center p-2 text-white rounded-md"
           to="/zikir/sholat"
         >
           Dzikir sholat
-        </nuxt-link>
+        </nuxt-link> -->
       </div>
       <h2
         class="text-green-700 border-green-700 border w-28 px-2 font-bold rounded-lg"

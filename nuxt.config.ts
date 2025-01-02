@@ -20,10 +20,12 @@ export default {
   },
   proxy: {
     "/api": {
-      target: "https://doa-doa-api-ahmadramadhan.fly.dev",
+      target: "https://muslim-api-three.vercel.app",
+      changeOrigin: true,
       pathRewrite: { "^/api": "" },
     },
   },
+
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@hypernym/nuxt-gsap"],
 
   tailwindcss: {

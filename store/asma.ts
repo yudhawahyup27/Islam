@@ -16,7 +16,7 @@ export const useAsmaStore = defineStore("asma", {
       try {
         this.loading = true;
         const { data } = await axios.get(
-          "https://api.dikiotang.com/quran/asma"
+          "https://asmaul-husna-api.vercel.app/api/all"
         );
         this.asmas = data.data;
       } catch (error) {

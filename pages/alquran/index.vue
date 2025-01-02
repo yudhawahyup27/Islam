@@ -14,12 +14,12 @@
       >
         Surah
       </nuxt-link>
-      <!-- <nuxt-link
+      <nuxt-link
         class="bg-green-700 w-16 text-center p-2 text-white rounded-md"
         to="/alquran/juz/"
       >
         Juz
-      </nuxt-link> -->
+      </nuxt-link>
     </div>
     <div class="loading" v-if="loading">
       <Loading />
@@ -57,7 +57,7 @@ export default {
     const suratStore = useSuratStore();
     await suratStore.fetchSurats();
     this.surats = suratStore.getSurats;
-    console.log(this.surats, "mu");
+    // console.log(this.surats, "mu");
     this.loading = false;
   },
   methods: {

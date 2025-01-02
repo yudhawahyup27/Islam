@@ -18,14 +18,14 @@
         <div class="loading flex mx-4 items-center justify-center" v-if="Loading">
           <Loading />
         </div>
-        <tbody v-else v-for="asma in asmas" :key="asma.id">
+        <tbody v-else v-for="asma in asmas" :key="asma.urutan">
           <tr
             class="odd:bg-white odd:dark:bg-green-900 even:bg-green-50 even:dark:bg-green-800 border-b dark:border-green-700"
           >
-            <td class="px-6 py-4">{{ asma.id }}</td>
+            <td class="px-6 py-4">{{ asma.urutan }}</td>
             <td class="px-6 py-4">{{ asma.latin }}</td>
             <td class="px-6 py-4">{{ asma.arab }}</td>
-            <td class="px-6 py-4">{{ asma.indo }}</td>
+            <td class="px-6 py-4">{{ asma.arti }}</td>
           </tr>
         </tbody>
       </table>

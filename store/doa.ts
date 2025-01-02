@@ -13,9 +13,9 @@ export const useDoaStore = defineStore("doa", {
   actions: {
     async fetchDoa() {
       try {
-        const { data } = await axios.get("https://api.dikiotang.com/doa/");
-        console.log("Response data:", data); // Debugging line
-        this.doas = data.data;
+        const { data } = await axios.get("https://open-api.my.id/api/doa");
+       // Debugging line
+        this.doas = data;
       } catch (error) {
         console.error("Error fetching data:", error);
       }
