@@ -1,16 +1,10 @@
 <template>
-  <div v-if="surah" class="mx-2">
-    <div class="fixed bg-green-700 rounded-md bottom-3">
-      <div class="flex justify-between mx-2">
-        <div class="flex gap-1">
-          <img width="20" src="/assets/img/menu.svg" alt="" />
-          <button @click="Menu" class="text-white text-sm">filter</button>
-        </div>
-
-        <div class="px-2 text-white">
-          |
+  <div v-if="surah" class="container mx-auto">
+    <div class="fixed bg-green-700 rounded-md bottom-0 w-100">
+      <div class="flex justify-center ">
+        <div class=" p-2">
           <nuxt-link
-            class="bg-green-700 rounded-full px-2 text-white"
+            class="text-white "
             :to="'/alquran/surah/' + (surah.number - 1)"
             :class="{ hidden: surah.number === 1 }"
           >
@@ -18,10 +12,9 @@
             <small>Previous Surah</small>
           </nuxt-link>
         </div>
-
-        <div class="">
+        <div class="p-2">
           <nuxt-link
-            class="bg-green-700 text-white rounded-full px-2"
+            class="text-white  "
             :to="'/alquran/surah/' + (surah.number + 1)"
             :class="{ hidden: surah.number === 114 }"
           >
@@ -31,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="flex gap-2">
+    <div class="flex gap-2 container">
       <PartialsAlquranSideBar class="" />
       <div class="basis-full">
         <PartialsBanner

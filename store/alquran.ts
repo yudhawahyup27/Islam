@@ -4,15 +4,15 @@ import axios from "axios";
 export const useSuratStore = defineStore("surat", {
   state: () => ({
     surats: [],
-    juzs: [],
+    // juzs: [],
     surat: null, // Add a state to hold a single surat
     loading: false,
     error: null,
   }),
   getters: {
-    getJuz(state) {
-      return state.juzs;
-    },
+    // getJuz(state) {
+    //   return state.juzs;
+    // },
     getSurats(state) {
       return state.surats;
     },
@@ -25,27 +25,27 @@ export const useSuratStore = defineStore("surat", {
       this.loading = true;
       this.error = null;
       try {
-        const { data } = await axios.get(
-          "https://api.dikiotang.com/quran/surah/"
-        );
-        this.surats = data.data;
+        const { data } = await axios.get("https://equran.id/api/surat");
+        this.surats = data;
       } catch (error) {
         console.error(error);
       } finally {
         this.loading = false;
       }
     },
-    async fetchJuz() {
-      this.loading = true;
-      try {
-        const { data } = await axios.get("https://api.dikiotang.com/quran/juz/");
-        this.juzs = data.data;
-      } catch (error) {
-        console.log(error);
-      } finally {
-        this.loading = false;
-      }
-    },
+    // async fetchJuz() {
+    //   this.loading = true;
+    //   try {
+    //     const { data } = await axios.get(
+    //       "https://api.dikiotang.com/quran/juz/"
+    //     );
+    //     this.juzs = data.data;
+    //   } catch (error) {
+    //     console.log(error);
+    //   } finally {
+    //     this.loading = false;
+    //   }
+    // },
     async fetchSuratById(nomor: number) {
       console.log("action fetchSuratById");
       try {

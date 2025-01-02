@@ -31,7 +31,7 @@
     >
       <CardAlquran
         v-for="surat in surats"
-        :key="surat.number"
+        :key="surat.nomor"
         :surat="surat"
         @selectSurah="handleSelectSurah"
       />
@@ -61,10 +61,10 @@ export default {
     this.loading = false;
   },
   methods: {
-    handleSelectSurah(number) {
+    handleSelectSurah(nomor) {
       this.$router.push({
         name: "alquran-surah-nomor",
-        params: { nomor: number },
+        params: { nomor: nomor },
       });
     },
   },
