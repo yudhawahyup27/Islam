@@ -19,16 +19,20 @@
         <button
           :class="{ hidden: counter == 0 }"
           @click.prevent="reset"
-          class="text-xs my-4 p-1 text-green-700"
+          class="text-xs my-4 p-1 bg-green-700 text-white rounded-md"
         >
           Reset
         </button>
-        <input
-          type="number"
-          class="border-green-500 text-center my-4"
-          v-model="target"
-          min="0"
-        />
+        <div >
+         
+          <input
+            id="target"
+            type="number"
+            class="border-2 rounded-md text-green-700 border-green-500 text-center my-4"
+            v-model="target"
+            min="0"
+          />
+        </div>
       </div>
     </div>
 
