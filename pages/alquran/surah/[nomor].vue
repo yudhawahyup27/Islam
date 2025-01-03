@@ -1,10 +1,10 @@
 <template>
   <div v-if="surah" class="container mx-auto">
     <div class="fixed bg-green-700 rounded-md bottom-0 w-100">
-      <div class="flex justify-center ">
-        <div class=" p-2">
+      <div class="flex justify-center">
+        <div class="p-2">
           <nuxt-link
-            class="text-white "
+            class="text-white"
             :to="'/alquran/surah/' + (surah.number - 1)"
             :class="{ hidden: surah.number === 1 }"
           >
@@ -14,7 +14,7 @@
         </div>
         <div class="p-2">
           <nuxt-link
-            class="text-white  "
+            class="text-white"
             :to="'/alquran/surah/' + (surah.number + 1)"
             :class="{ hidden: surah.number === 114 }"
           >
@@ -33,9 +33,21 @@
           arabicText="عَنْ أَبي أُمَامَةَ الْبَاهِلِىُّ رضى الله عنه قَالَ سَمِعْتُ رَسُولَ اللَّهِ -صلى الله عليه وسلم- يَقُولُ اقْرَءُوا الْقُرْآنَ فَإِنَّهُ يَأْتِى يَوْمَ الْقِيَامَةِ شَفِيعًا لأَصْحَابِهِ"
           translation="“Aisyah radhiyallahu ‘anha meriwayatkan bahwa Rasulullah shallallahu ‘alaihi wasallam bersabda: “Seorang yang lancar membaca Al Quran akan bersama para malaikat yang mulia dan senantiasa selalu taat kepada Allah, adapun yang membaca Al Quran dan terbata-bata di dalamnya dan sulit atasnya bacaan tersebut maka baginya dua pahala” (HR. Muslim)."
         />
-        <h1 class="text-center text-green-700 font-bold my-2">
-          {{ surah.asma.ar.long }}
-        </h1>
+        <div class="card bg-green-700 p-4 gap-4 my-4 text-white flex justify-between">
+          <div>
+            <h1 class="text-white font-bold">
+              {{ surah.asma.id.short }}  -   {{ surah.asma.ar.short}}
+            </h1>
+            <span>Ayah :{{ surah.ayahCount }}</span>
+          </div>
+
+          <div>
+            <h2>{{ surah.type.id }}</h2>
+            <button @click="fullaudio" class="button bg-white text-green-700 px-3 py-2 rounded-md">
+              {{ isPlaying ? "Pause " : "Play " }} Full Surah
+            </button>
+          </div>
+        </div>
         <div
           class="my-6"
           v-for="ayah in surah.ayahs"
@@ -86,11 +98,11 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
+const isPlaying = ref(false);
 const route = useRoute();
 const surah = ref(null);
 const ayahRefs = {}; // Objek untuk menyimpan referensi ayat
@@ -140,7 +152,38 @@ async function fetchSurah() {
   surah.value = data.data;
 }
 
-fetchSurah();
+function fullaudio() {
+  if (isPlaying.value) {
+    // Jika audio sedang dimainkan, hentikan audio
+    audioElement.value.pause();
+    audioElement.value.currentTime = 0; // Reset ke awal
+    isPlaying.value = false;
+  } else {
+    // Jika audio tidak dimainkan, mulai audio baru
+    if (audioElement.value) {
+      audioElement.value.pause(); // Pastikan audio lain berhenti
+    }
+
+    // Inisialisasi audio baru
+    audioElement.value = new Audio(surah.value.recitation.full);
+
+    // Mulai memutar audio
+    audioElement.value.play();
+    isPlaying.value = true;
+
+    // Event listener ketika audio selesai
+    audioElement.value.onended = () => {
+      isPlaying.value = false; // Ubah status menjadi tidak diputar
+    };
+
+    // Tangani error pada pemutaran audio
+    audioElement.value.onerror = (error) => {
+      console.error("Error playing audio:", error);
+      alert("Gagal memutar audio. Mohon coba lagi.");
+      isPlaying.value = false;
+    };
+  }
+}
 
 function togglePlayPause(ayahId) {
   if (playingAyah.value === ayahId) {
@@ -203,6 +246,8 @@ async function copyText(arabicText, translationText) {
     alert("Tidak dapat menyalin teks. Mohon coba lagi.");
   }
 }
+
+fetchSurah();
 </script>
 
 <style>
