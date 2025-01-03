@@ -37,7 +37,7 @@ export const useSuratStore = defineStore("surat", {
       this.loading = true;
       try {
         const response = await axios.get(
-          "https://muslim-api-three.vercel.app/v1/quran/juz"
+          "https://api.myquran.com/v2/quran/juz/semua"
         );
         this.juzs = response.data;
       } catch (error) {

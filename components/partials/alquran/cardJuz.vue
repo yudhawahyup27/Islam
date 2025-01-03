@@ -13,7 +13,7 @@
             class="relative w-10 h-10 bg-green-700 rounded-md rotate-45 flex items-center justify-center"
           >
             <span class="counter-rotate -rotate-45 text-white">
-              {{ juz.number }}
+              {{ juz.name }}
             </span>
           </div>
           <div class="flex flex-col">

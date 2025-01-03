@@ -3,9 +3,9 @@
     <div>
       <NuxtLayout>
         <navbar />
-        <div class="container">
+      
           <NuxtPage />
-        </div>
+     
       </NuxtLayout>
     </div>
   </template>
