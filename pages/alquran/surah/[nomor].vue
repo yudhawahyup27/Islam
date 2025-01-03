@@ -33,18 +33,39 @@
           arabicText="عَنْ أَبي أُمَامَةَ الْبَاهِلِىُّ رضى الله عنه قَالَ سَمِعْتُ رَسُولَ اللَّهِ -صلى الله عليه وسلم- يَقُولُ اقْرَءُوا الْقُرْآنَ فَإِنَّهُ يَأْتِى يَوْمَ الْقِيَامَةِ شَفِيعًا لأَصْحَابِهِ"
           translation="“Aisyah radhiyallahu ‘anha meriwayatkan bahwa Rasulullah shallallahu ‘alaihi wasallam bersabda: “Seorang yang lancar membaca Al Quran akan bersama para malaikat yang mulia dan senantiasa selalu taat kepada Allah, adapun yang membaca Al Quran dan terbata-bata di dalamnya dan sulit atasnya bacaan tersebut maka baginya dua pahala” (HR. Muslim)."
         />
-        <div class="card bg-green-700 p-4 gap-4 my-4 text-white flex justify-between">
+        <div
+          class="card bg-green-700 p-4 gap-4 my-4 text-white flex justify-between rounded-md"
+        >
           <div>
             <h1 class="text-white font-bold">
-              {{ surah.asma.id.short }}  -   {{ surah.asma.ar.short}}
+              {{ surah.asma.id.short }} - {{ surah.asma.ar.short }}
             </h1>
             <span>Ayah :{{ surah.ayahCount }}</span>
           </div>
 
           <div>
             <h2>{{ surah.type.id }}</h2>
-            <button @click="fullaudio" class="button bg-white text-green-700 px-3 py-2 rounded-md">
-              {{ isPlaying ? "Pause " : "Play " }} Full Surah
+            <button
+              @click="fullaudio"
+              class="button bg-white text-green-700 px-2 py-1 rounded-md flex"
+            >
+              <div v-if="isPlaying">
+                <img
+                  width="24"
+                  height="24"
+                  src="https://img.icons8.com/fluency/24/pause.png"
+                  alt="pause"
+                />
+              </div>
+              <div v-else>
+                <img
+                  width="24"
+                  height="24"
+                  src="https://img.icons8.com/color/24/play--v1.png"
+                  alt="play--v1 mr-2"
+                />
+              </div>
+              Full Surah
             </button>
           </div>
         </div>
