@@ -9,6 +9,9 @@
       >
         {{ counter }}
       </h2>
+      <p class="text-green-700 text-lg font-semibold mt-4">
+        Repetisi: {{ repetitions }}
+      </p>
       <div
         :class="{ 'grid-cols-1': counter === 0, 'grid-cols-2': counter !== 0 }"
         class="grid gap-4"
@@ -41,15 +44,20 @@ import { ref } from "vue";
 // Inisialisasi variabel target dan counter
 const target = ref(33);
 const counter = ref(0);
+const repetitions = ref(0);
 
 // Fungsi untuk melakukan klik pada dzikir
 const clickDzikir = () => {
-  const dzikir = counter.value === target.value;
-  dzikir ? (counter.value = 0) : counter.value++;
+  if (counter.value === target.value) {
+    counter.value = 0;
+    repetitions.value += 1;
+  } else {
+    counter.value += 1;
+  }
 };
-
 // Fungsi untuk mereset counter menjadi 0
 const reset = () => {
+  repetitions.value = 0;
   counter.value = 0;
 };
 </script>
