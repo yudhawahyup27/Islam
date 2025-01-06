@@ -13,7 +13,7 @@
         Repetisi: {{ repetitions }}
       </p>
       <div
-        :class="{ 'grid-cols-1': counter === 0, 'grid-cols-2': counter !== 0 }"
+        :class="{ 'grid-cols-1': counter === 0, 'grid-cols-1': counter !== 0 }"
         class="grid gap-4"
       >
         <button
