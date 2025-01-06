@@ -47,14 +47,20 @@
                 : totalZakat
             }}
           </span>
-          <div v-if="typeof totalZakat >= 0">
+          <div v-if="totalZakat >= 0">
             <nuxt-link
-              class="bg-white m-2 p-1 text-green-700 rounded-md w-4"
+              class="bg-white p-2 text-green-700 rounded-md"
               to="/zakat/bayarzakat"
               >Bayar</nuxt-link
             >
           </div>
-          <button v-else @click="resetTotalZakat">Hapus</button>
+          <button
+            class="bg-white p-2 text-green-700 rounded-md"
+            v-else
+            @click="resetTotalZakat"
+          >
+            Hapus
+          </button>
         </div>
       </div>
     </div>

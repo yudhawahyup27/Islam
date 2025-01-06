@@ -78,9 +78,32 @@
               >Isi dengan Anonymous</label
             >
           </div>
+          <button class="bg-green-700 text-white p-2 rounded-md">
+            Bayar Zakat
+          </button>
         </div>
       </div>
     </form>
+
+    <!-- Data Zakat -->
+    <div class="mt-4">
+      <h3 class="font-bold">Riwayat Zakat</h3>
+      <hr class="" />
+      <div class="bg-white shadow-md my-4 rounded-md p-2">
+        <div class="flex flex-col">
+          <h4 class="text-green-700 font-bold">Yudha Wahyu Pratama</h4>
+          <small>Bayar Zakat Profesi</small>
+          <small>4 Desember 2024</small>
+          <hr />
+        </div>
+        <div class="flex flex-col">
+          <h4 class="text-green-700 font-bold">Anonymous</h4>
+          <small>Bayar Zakat Profesi</small>
+          <small>4 Desember 2024</small>
+          <hr />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
