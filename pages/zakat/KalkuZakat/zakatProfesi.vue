@@ -5,7 +5,7 @@
     <div class="mx-2">
       <h2 class="text-center">Akumulasi Gaji</h2>
       <small>Nilai Akhir Gaji Bulanan dan Terkumpul dalam 1 tahun</small>
-      <div class="relative mx-2">
+      <div class="relative mx-2 shadow-md  my-2">
         <div
           class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none"
         >
@@ -26,8 +26,9 @@
           </svg>
         </div>
         <input
-          v-model="totalGaji"
+          v-model="formattedInput"
           type="number"
+          @input="onInput"
           id="currency-input"
           class="block p-2.5 w-full z-20 ps-10 text-sm rounded-lg border-green-700 border-2 focus:ring-green-700"
           placeholder="Enter amount"
@@ -36,16 +37,12 @@
       </div>
 
       <div class="flex flex-col" v-if="totalZakat !== null">
-        <span>Jumlah zakat yang wajib dibayarkan</span>
+        <span class="mb-2">Jumlah zakat yang wajib dibayarkan</span>
         <div
           class="bg-green-700 text-white p-2 rounded-lg flex justify-between"
         >
           <span class="text-lg font-bold">
-            {{
-              typeof totalZakat === "number"
-                ? formatRupiah(totalZakat)
-                : totalZakat
-            }}
+            {{ typeof totalZakat === "number" ? $formatCurrency(totalZakat) : totalZakat }}
           </span>
           <div v-if="totalZakat >= 0">
             <nuxt-link
@@ -72,13 +69,14 @@ export default {
   props: {
     emitTotalGaji: {
       type: Function,
-      required: true,
+      required: false, // Menjadikannya opsional
     },
   },
   data() {
     return {
       totalGaji: 0,
-      totalZakat: 0,
+      formattedInput: "", // Untuk menyimpan nilai yang diformat
+      totalZakat: null,
       totalEmas: null,
     };
   },
@@ -97,15 +95,16 @@ export default {
         }
       }
     },
-    formatRupiah(angka) {
-      if (typeof angka !== "number") return angka;
-      const rupiah =
-        "Rp " + angka.toFixed(0).replace(/\d(?=(\d{3})+$)/g, "$&,");
-      return rupiah;
+    onInput(event) {
+      const rawValue = event.target.value.replace(/[^,\d]/g, ""); // Menghapus semua karakter kecuali angka dan koma
+      const parsedValue = parseInt(rawValue.replace(/,/g, ""), 10) || 0; // Menghapus koma dan mengubah ke angka
+      this.totalGaji = parsedValue;
+      this.formattedInput = this.$formatCurrency(parsedValue);
     },
     resetTotalZakat() {
-      this.totalZakat = 0;
+      this.totalZakat = null;
       this.totalGaji = 0;
+      this.formattedInput = "";
     },
   },
   watch: {
@@ -119,4 +118,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+/* Tambahkan styling tambahan jika diperlukan */
+</style>

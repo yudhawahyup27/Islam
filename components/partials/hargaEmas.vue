@@ -3,6 +3,7 @@
     <span>Nishab Emas 85 Gram</span>
     <p>{{ totalEmas ? formatRupiah(totalEmas) : "Loading..." }}</p>
     <span>Tanggal: {{ emas ? emas.update_gold_price : "Loading..." }}</span>
+    <p>source : <nuxt-link :to="emas?.source" class="text-white ">harga-emas.org</nuxt-link> </p>
   </div>
 </template>
 
