@@ -27,7 +27,7 @@
         </div>
         <input
           v-model="formattedInput"
-          type="number"
+          type="text"
           @input="onInput"
           id="currency-input"
           class="block p-2.5 w-full z-20 ps-10 text-sm rounded-lg border-green-700 border-2 focus:ring-green-700"
