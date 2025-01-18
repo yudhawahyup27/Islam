@@ -90,6 +90,11 @@ export default {
           img: "https://cdn-icons-png.flaticon.com/128/2645/2645341.png",
           label: "Zakat",
         },
+        {
+          to: "/jadwal-imsyakkiyah",
+          img: "https://cdn-icons-png.flaticon.com/128/4358/4358736.png",
+          label: "Jadwal Imsyakkiyah",
+        },
       ],
     };
   },
