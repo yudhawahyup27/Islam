@@ -4,7 +4,7 @@ export default defineNuxtPlugin(() => {
       typeof value === "number" ? value : parseInt(value, 10) || 0;
 
     return new Intl.NumberFormat("id-ID", {
-      style: "currency",
+      //   style: "currency",
       currency: "IDR",
       minimumFractionDigits: 0,
     }).format(numericValue);

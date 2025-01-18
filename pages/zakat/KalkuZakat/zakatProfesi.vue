@@ -5,7 +5,7 @@
     <div class="mx-2">
       <h2 class="text-center">Akumulasi Gaji</h2>
       <small>Nilai Akhir Gaji Bulanan dan Terkumpul dalam 1 tahun</small>
-      <div class="relative mx-2 shadow-md  my-2">
+      <div class="relative mx-2 shadow-md my-2">
         <div
           class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none"
         >
@@ -27,7 +27,7 @@
         </div>
         <input
           v-model="formattedInput"
-          type="text"
+          type="number"
           @input="onInput"
           id="currency-input"
           class="block p-2.5 w-full z-20 ps-10 text-sm rounded-lg border-green-700 border-2 focus:ring-green-700"
@@ -42,7 +42,11 @@
           class="bg-green-700 text-white p-2 rounded-lg flex justify-between"
         >
           <span class="text-lg font-bold">
-            {{ typeof totalZakat === "number" ? $formatCurrency(totalZakat) : totalZakat }}
+            {{
+              typeof totalZakat === "number"
+                ? $formatCurrency(totalZakat)
+                : totalZakat
+            }}
           </span>
           <div v-if="totalZakat >= 0">
             <nuxt-link
