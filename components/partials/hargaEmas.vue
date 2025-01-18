@@ -1,9 +1,17 @@
 <template>
   <div class="bg-green-700 text-white p-2 mx-2 rounded">
     <span>Nishab Emas 85 Gram</span>
-    <p>{{ totalEmas ? formatRupiah(totalEmas) : "Loading..." }}</p>
-    <span>Tanggal: {{ emas ? emas.update_gold_price : "Loading..." }}</span>
-    <p>source : <nuxt-link :to="emas?.source" class="text-white ">harga-emas.org</nuxt-link> </p>
+    <h1>
+      {{ totalEmas ? formatRupiah(totalEmas) : "Loading..." }}
+    </h1>
+    <p>Tanggal: {{ emas ? emas.update_gold_price : "Loading..." }}</p>
+    <small class="text-xs">harga emas :{{ emas?.kurs_bi.kg }}/gram</small>
+    <p>
+      source :
+      <nuxt-link :to="emas?.source" class="text-white"
+        >harga-emas.org</nuxt-link
+      >
+    </p>
   </div>
 </template>
 
@@ -29,11 +37,12 @@ export default {
         const response = await axios.get("https://gold-price.vercel.app/api");
         this.emas = response.data;
         const hargaPerGram = parseFloat(
-          response.data.idr.gr.replace(/\./g, "").replace(",", ".")
+          response.data.kurs_bi.kg.replace(/\./g, "").replace(",", ".")
         );
         if (!isNaN(hargaPerGram)) {
+          // Mengalikan harga per gram dengan 85 gram
           this.totalEmas = hargaPerGram * 85;
-          this.emitHargaEmas(this.totalEmas); // Emit the totalEmas value to parent component
+          this.emitHargaEmas(this.totalEmas); // Emit totalEmas ke komponen induk
         } else {
           console.error("Invalid gold price data");
         }
