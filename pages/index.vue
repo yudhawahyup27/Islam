@@ -4,7 +4,7 @@
 
     <div class="grid grid-cols-3 md:grid-cols-4 justify-items-center my-4">
       <nuxt-link
-        v-for="(item, index) in Icon"
+        v-for="(item, index) in displayIcon"
         :key="index"
         :to="item.to"
         class="text-center max-w-24 text-green-700 font-bold"
@@ -21,7 +21,14 @@
         <span>{{ item.label }}</span>
       </nuxt-link>
     </div>
-
+    <div class="text-center mt-4">
+      <button
+        @click="toggleShowAll"
+        class="bg-green-700 text-white py-2 px-4 rounded shadow-lg hover:bg-green-600"
+      >
+        {{ showAll ? "Lihat Lebih Sedikit" : "Lihat Semua" }}
+      </button>
+    </div>
     <!-- Quotes -->
     <div class="grid grid-cols-1 md:grid-cols-2 p-4 my-4 shadow-sm mx-4">
       <div class="flex justify-center align-middle my-auto">
@@ -43,6 +50,8 @@ import axios from "axios";
 export default {
   data() {
     return {
+      showAll: false,
+      isMediumScreen: false, // Untuk mendeteksi ukuran layar medium
       surah: null,
       Icon: [
         {
@@ -99,9 +108,30 @@ export default {
     };
   },
   mounted() {
+    this.detectScreenSize();
+    window.addEventListener("resize", this.detectScreenSize);
     this.getDailyRandomSurah();
   },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.detectScreenSize);
+  },
+  computed: {
+    displayIcon() {
+      if (this.showAll) {
+        return this.Icon;
+      }
+      return this.isMediumScreen
+        ? this.Icon.slice(0, 8)
+        : this.Icon.slice(0, 6);
+    },
+  },
   methods: {
+    toggleShowAll() {
+      this.showAll = !this.showAll;
+    },
+    detectScreenSize() {
+      this.isMediumScreen = window.innerWidth >= 768; // Sesuaikan ukuran md di Tailwind (default 768px)
+    },
     async getDailyRandomSurah() {
       try {
         setInterval(async () => {
