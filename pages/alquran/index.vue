@@ -14,60 +14,67 @@
       >
         Surah
       </nuxt-link>
-      <nuxt-link
-        class="bg-green-700 w-16 text-center p-2 text-white rounded-md"
-        to="/alquran/juz/"
-      >
+      <!-- <nuxt-link class="bg-green-700 w-16 text-center p-2 text-white rounded-md" to="/alquran/juz/">
         Juz
-      </nuxt-link>
+      </nuxt-link> -->
     </div>
     <div class="loading" v-if="loading">
       <Loading />
     </div>
 
-    <div
-      v-else
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-4"
-    >
-      <CardAlquran
-        v-for="surat in surats"
-        :key="surat.nomor"
-        :surat="surat"
-        @selectSurah="handleSelectSurah"
-      />
+    <div v-else>
+      <form class="max-w-md mx-auto">
+        <div class="relative">
+          <input
+            v-model="searchTerm"
+            type="search"
+            class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Search Surah  (Al-fatihah)"
+          />
+        </div>
+      </form>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-4">
+        <CardAlquran
+          v-for="surat in filteredSurats"
+          :key="surat.nomor"
+          :surat="surat"
+          @selectSurah="handleSelectSurah"
+        />
+      </div>
     </div>
   </div>
 </template>
 
-<script>
-import Loading from "~/components/partials/loading.vue";
-import PartialsBanner from "~/components/partials/banner.vue"; // Adjust path as needed
-import CardAlquran from "~/components/partials/alquran/cardAlquran.vue";
+<script setup>
+import { ref, computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import { useSuratStore } from "~/store/alquran";
+import Loading from "~/components/partials/loading.vue";
+import PartialsBanner from "~/components/partials/banner.vue";
+import CardAlquran from "~/components/partials/alquran/cardAlquran.vue";
 
-export default {
-  components: { Loading, PartialsBanner, CardAlquran },
-  data() {
-    return {
-      surats: [],
-      loading: true,
-    };
-  },
-  async created() {
-    const suratStore = useSuratStore();
-    await suratStore.fetchSurats();
-    this.surats = suratStore.getSurats;
-    // console.log(this.surats, "mu");
-    this.loading = false;
-  },
-  methods: {
-    handleSelectSurah(nomor) {
-      this.$router.push({
-        name: "alquran-surah-nomor",
-        params: { nomor: nomor },
-      });
-    },
-  },
+const router = useRouter();
+const suratStore = useSuratStore();
+const searchTerm = ref("");
+
+const searchSurah = ref("");
+const loading = ref(true);
+
+onMounted(async () => {
+  await suratStore.fetchSurats();
+  loading.value = false;
+});
+
+const filteredSurats = computed(() => {
+  if (!searchTerm.value) return suratStore.surats;
+  return suratStore.surats.filter((surat) =>
+    surat.nama_latin.toLowerCase().includes(searchTerm.value.toLowerCase())
+  );
+});
+
+const handleSelectSurah = (nomor) => {
+  router.push({ name: "alquran-surah-nomor", params: { nomor } });
 };
 </script>
 
