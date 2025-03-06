@@ -1,62 +1,77 @@
 <template>
-  <div>
-    <div class="relative overflow-x-auto mx-4 my-3 shadow-md sm:rounded-lg">
-      <table
-        class="w-full text-sm text-left rtl:text-right text-white dark:text-white"
+  <div class="mx-4 my-6">
+    <div v-if="loading" class="flex justify-center items-center">
+      <Loading />
+    </div>
+    <div v-else class="grid md:grid-cols-4 grid-cols-2 gap-4">
+      <div
+        v-for="(asma, index) in asmas"
+        :key="index"
+        :class="[
+          asma.color,
+          ' w-30 h-30 text-center py-4 text-white flex flex-col justify-center items-center shadow rounded-md ',
+        ]"
       >
-        <thead
-          class="text-xs text-white uppercase bg-green-700 dark:bg-green-700 dark:text-white"
+        <div
+          class="bg-white rounded-full w-10 h-10 text-green-600 flex justify-center items-center text-lg font-bold"
         >
-          <tr>
-            <th scope="col" class="px-6 py-3">No</th>
-            <th scope="col" class="px-6 py-3">Asmaul Husna</th>
-            <th scope="col" class="px-6 py-3">Arab</th>
-            <th scope="col" class="px-6 py-3">Terjemah</th>
-          </tr>
-        </thead>
-
-        <div class="loading flex mx-4 items-center justify-center" v-if="Loading">
-          <Loading />
+          {{ index + 1 }}
         </div>
-        <tbody v-else v-for="asma in asmas" :key="asma.urutan">
-          <tr
-            class="odd:bg-white odd:dark:bg-green-900 even:bg-green-50 even:dark:bg-green-800 border-b dark:border-green-700"
-          >
-            <td class="px-6 py-4">{{ asma.urutan }}</td>
-            <td class="px-6 py-4">{{ asma.latin }}</td>
-            <td class="px-6 py-4">{{ asma.arab }}</td>
-            <td class="px-6 py-4">{{ asma.arti }}</td>
-          </tr>
-        </tbody>
-      </table>
+        <h4 class="text-md mt-2">{{ asma.arab }}</h4>
+        <h5>{{ asma.latin }}</h5>
+        <span class="bg-white text-xs text-green-400 my-1 p-2 rounded-md mx-2">{{
+          asma.arti
+        }}</span>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Loading from "~/components/partials/loading.vue";
 import { useAsmaStore } from "~/store/asma";
-export default {
-  components: {
-    Loading,
-  },
-  data() {
-    return {
-      Loading: true,
-      asmas: [],
-    };
-  },
-  async mounted() {
-    const asmaStore = useAsmaStore();
-    await asmaStore.fetchAsma();
-    this.asmas = asmaStore.getAsma;
-    this.Loading = false;
-  },
-};
-</script>
 
-<style>
-tr:nth-child(even) {
-  background: red;
+interface Asma {
+  name: string;
+  arab: string;
+  latin: string;
+  arti: string;
+  color: string;
 }
-</style>
+
+const loading = ref<boolean>(true);
+const asmas = ref<Asma[]>([]);
+
+const colors: string[] = [
+  "bg-red-500",
+  "bg-blue-500",
+  "bg-green-500",
+  "bg-yellow-500",
+  "bg-purple-500",
+  "bg-pink-500",
+  "bg-indigo-500",
+  "bg-teal-500",
+  "bg-orange-500",
+  "bg-lime-500",
+  "bg-violet-500",
+  "bg-sky-500",
+
+  
+];
+
+const color = ref<string>("");
+
+function getrandom(): string {
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+onMounted(async (): Promise<void> => {
+  const store = useAsmaStore();
+  await store.fetchAsma();
+  asmas.value = store.getAsma.map((asma: Asma) => ({
+    ...asma,
+    color: getrandom(),
+  }));
+  loading.value = false; // Matikan loading
+});
+</script>
