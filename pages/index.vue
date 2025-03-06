@@ -79,11 +79,11 @@ export default {
           img: "https://cdn-icons-png.flaticon.com/128/2914/2914720.png",
           label: "Asmaul husna",
         },
-        {
-          to: "/zikir",
-          img: "https://cdn-icons-png.flaticon.com/128/14192/14192559.png",
-          label: "Zikir",
-        },
+        // {
+        //   to: "/zikir",
+        //   img: "https://cdn-icons-png.flaticon.com/128/14192/14192559.png",
+        //   label: "Zikir",
+        // },
         {
           to: "/hadist",
           img: "https://cdn-icons-png.flaticon.com/128/4407/4407161.png",
@@ -99,11 +99,11 @@ export default {
           img: "https://cdn-icons-png.flaticon.com/128/2645/2645341.png",
           label: "Zakat",
         },
-        {
-          to: "/jadwal-imsyakkiyah",
-          img: "https://cdn-icons-png.flaticon.com/128/4358/4358736.png",
-          label: "Jadwal Imsyakkiyah",
-        },
+        // {
+        //   to: "/jadwal-imsyakkiyah",
+        //   img: "https://cdn-icons-png.flaticon.com/128/4358/4358736.png",
+        //   label: "Jadwal Imsyakkiyah",
+        // },
       ],
     };
   },
